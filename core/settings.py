@@ -81,6 +81,7 @@ DATABASES = {
 }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -116,3 +117,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# --- НАЛАШТУВАННЯ CELERY (КУХАРЯ) ---
+
+# Куди Django буде кидати задачі (Наша Дошка Redis)
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+
+# Куди Celery буде класти результати (Теж Redis)
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+
+# Часовий пояс (нехай буде як у Django)
+CELERY_TIMEZONE = TIME_ZONE

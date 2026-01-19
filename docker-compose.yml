@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .  # Будуємо з поточної папки
+    ports:
+      - "8000:8000"  # Зліва порт ноута, справа порт контейнера
+    volumes:
+      - ".:/app" # Зліва шлях на твоєму ноуті, справа шлях у контейнері
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
